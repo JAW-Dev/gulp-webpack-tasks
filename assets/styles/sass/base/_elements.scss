@@ -1,0 +1,60 @@
+//--------------------------------------------------------------
+// HTML Elements
+//--------------------------------------------------------------
+
+// Iframes
+embed,
+iframe,
+object {
+	max-width: 100%;
+}
+
+hr {
+	background-color: $color-background-hr;
+	border: none;
+	height: 1px;
+	margin: 0 0 rem(24) 0;
+	width: auto;
+}
+
+figure {
+	margin: 0;
+}
+
+// Lists
+ul,
+ol {
+	margin: 0 0 rem(24) rem(24);
+}
+
+ul {
+	list-style: disc;
+}
+
+ol {
+	list-style: decimal;
+}
+
+li > ul,
+li > ol {
+	margin: 0 0 0 rem(24);
+}
+
+dt {
+	font-weight: 700;
+}
+
+dd {
+	margin: 0 rem(24) rem(24) 0;
+}
+
+// Tables
+table {
+	height: auto;
+	margin: 0 0 rem(24) 0;
+	width: 100%;
+}
+
+th {
+	font-weight: 700;
+}

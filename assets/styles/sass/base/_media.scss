@@ -1,0 +1,91 @@
+// ========================================
+// Media
+// ========================================
+
+// Target Embed Video on page
+.wp-video {
+	display: block;
+	float: none;
+	overflow: hidden;
+}
+
+// Images
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+// Image captions
+.wp-caption {
+	margin: 0 0 rem(24) 0;
+	max-width: 100%;
+
+	img[class*="wp-image-"] {
+		display: block;
+		margin: 0 auto;
+	}
+
+	&.aligncenter {
+		margin: 0 auto rem(24) auto;
+	}
+
+	&.alignleft {
+		margin-right: rem(24);
+	}
+
+	&.alignright {
+		margin-left: rem(24);
+	}
+
+	.wp-caption-text {
+		font-style: italic;
+		line-height: 1.2;
+		margin: rem(6) 0 0;
+		text-align: center;
+	}
+}
+
+// Image caption text
+.wp-caption-text {
+	text-align: center;
+}
+
+// Fluid embed
+.fluid-embed {
+	@include media("<=tablet") {
+		padding-bottom: calc(56.25% - 2.1875rem); // For ratio 16:9. 75% if ratio is 4:3 rem(35);
+	}
+
+	height: 0;
+	overflow: hidden;
+	padding-bottom: 56.25%; // For ratio 16:9. 75% if ratio is 4:3 rem(35);
+	position: relative;
+
+	embed,
+	object,
+	iframe {
+		height: 100%;
+		left: 0;
+		position: absolute;
+		top: 0;
+		width: 100%;
+	}
+}
+
+// Center image background
+.image-as-background {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// Video as background
+.video-as-background {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+	object-position: center top;
+	position: absolute;
+	width: 100%;
+	z-index: 1;
+}

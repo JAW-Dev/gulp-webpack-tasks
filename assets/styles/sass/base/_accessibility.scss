@@ -1,0 +1,30 @@
+// ========================================
+// Accessibility
+// ========================================
+
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	height: rem(1px);
+	overflow: hidden;
+	position: absolute;
+	width: rem(1px);
+
+	&:focus {
+		@include font-size(0.875);
+
+		background-color: $color-background-screen;
+		box-shadow: 0 0 2px 2px $color-screen-reader-box-shadow;
+		clip: auto;
+		color: $color-text-screen;
+		display: block;
+		font-weight: bold;
+		height: auto;
+		left: 5px;
+		line-height: normal;
+		padding: rem(15px) rem(23px) rem(14px);
+		text-decoration: none;
+		top: 5px;
+		width: auto;
+		z-index: 100000;
+	}
+}

@@ -8,19 +8,16 @@
  * @version   1.0.0
  */
 
-import { api, webpack, UglifyJsPlugin, log } from './tasks/gulp/config/imports';
+import { api, enviroment, webpack, UglifyJsPlugin } from './tasks/gulp/config/imports';
 
-const files = api.getStructure().files;
-const paths = api.getStructure().paths;
-
-log(__dirname + '/' + files.js);
-log(__dirname + '/' + paths.scripts + '/script.js');
+const scriptsDir = enviroment.paths.scripts;
+const js = scriptsDir + '/' + enviroment.files.js;
 
 module.exports = {
-  entry: __dirname + '/' + files.js,
+  entry: __dirname + '/' + js,
   output: {
       filename: 'script.min.js',
-      path: __dirname + '/' + paths.scripts + '/',
+      path: __dirname + '/' + scriptsDir + '/',
   },
   devtool: 'eval-source-map',
   module: {

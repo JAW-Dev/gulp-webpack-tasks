@@ -11,7 +11,7 @@
 'use strict';
 
 import yargs, { argv } from 'yargs';
-import plumber from 'gulp-plumber';
+import fs from 'fs';
 
 export default {
   environment: ( argv.env ) ? argv.env : 'development',
@@ -25,19 +25,5 @@ export default {
     }
     environmentType.environment = this.environment;
     return environmentType;
-  },
-
-  getStructure() {
-    let structureFile;
-    try {
-      structureFile = require('./config/structure');
-    } catch (e) {
-      throw new Error('No structure file found');
-    }
-    return structureFile;
-  },
-
-  getPackageJson: () => {
-    return JSON.parse( fs.readFileSync( './package.json', 'utf8' ) );
-  },
+  }
 }

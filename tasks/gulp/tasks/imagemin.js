@@ -10,7 +10,7 @@
 
 'use strict';
 
-import { api, enviroment, files, gulp, gulpif, imagemin, paths } from '../config/imports';
+import { api, enviroment, gulp, gulpif, imagemin } from '../config/imports';
 
 const imagesDir = enviroment.paths.images;
 const images = imagesDir + '/' + enviroment.files.images;

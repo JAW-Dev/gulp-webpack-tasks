@@ -10,7 +10,7 @@
 
 'use strict';
 
-import { api, babel, concat, del, enviroment, files, gulp, gulpif, ignore, paths, rename, sourcemaps, uglify, webpack, webpackStream } from '../config/imports';
+import { api, babel, concat, del, enviroment, gulp, gulpif, ignore, rename, sourcemaps, uglify, webpack, webpackStream } from '../config/imports';
 
 const webpackConfig = require( './../../../webpack.config.js' );
 const scriptsDir = enviroment.paths.scripts;
@@ -33,7 +33,7 @@ gulp.task( 'cleanScripts', () =>
  *
  * @since 1.0.0
  */
-gulp.task( 'concat', () =>
+gulp.task( 'concat', [ 'cleanScripts' ], () =>
 	gulp.src( concatScripts )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
 		.pipe( gulpif( enviroment.babel, babel({ presets: [ 'latest' ] }) ) )
@@ -47,10 +47,10 @@ gulp.task( 'concat', () =>
   *
   * @since 1.0.0
   */
- gulp.task( 'uglify', () =>
+ gulp.task( 'uglify', [ 'concat' ], () =>
 	 gulp.src( js )
 		.pipe( ignore.exclude( enviroment.webpack ) )
-		.pipe( gulp.dest( paths.scripts ) )
+		.pipe( gulp.dest( scriptsDir ) )
 		.pipe( gulpif( enviroment.minimize, uglify({ 'mangle': false }) ) )
 		.pipe( gulpif( enviroment.minimize, rename({ extname: '.min.js' }) ) )
 		.pipe( gulpif( enviroment.minimize, gulp.dest( scriptsDir ) ) )
@@ -61,7 +61,7 @@ gulp.task( 'concat', () =>
  *
  * @since 1.0.0
  */
-gulp.task( 'webpack', () => {
+gulp.task( 'webpack', [ 'uglify' ], () => {
 	gulp.src( js )
 		.pipe( gulpif( enviroment.webpack, webpackStream( webpackConfig ) ), webpack )
 		.pipe( gulpif( enviroment.webpack, gulp.dest( scriptsDir ) ) )
@@ -72,4 +72,4 @@ gulp.task( 'webpack', () => {
   *
   * @since 1.0.0
   */
-gulp.task( 'scripts', [ 'cleanScripts', 'concat', 'uglify', 'webpack' ]);
+gulp.task( 'scripts', [ 'uglify' ] );

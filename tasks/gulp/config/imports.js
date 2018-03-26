@@ -30,13 +30,12 @@ import sass from 'gulp-sass';
 import sassLint from 'gulp-sass-lint';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
+import watch from 'gulp-watch';
 import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import yargs, { argv } from 'yargs';
 
 const enviroment = api.getEnvironment().default;
-const files = api.getStructure().files;
-const paths = api.getStructure().paths;
 
 export {
     api,
@@ -50,14 +49,12 @@ export {
     del,
     log,
     enviroment,
-    files,
     fs,
     gulp,
     gulpif,
     ignore,
     imagemin,
     notify,
-    paths,
     postcss,
     UglifyJsPlugin,
     rename,

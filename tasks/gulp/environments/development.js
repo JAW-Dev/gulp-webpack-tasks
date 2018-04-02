@@ -1,71 +1,60 @@
 export default {
     
-    /**
-     * Enable bable.
-     */
+    /* Enable bable */
     babel: true,
 
-    /**
-     * Enable JavaScript Concat.
-     */
+    /* Enable JavaScript Concat */
     concat: true,
     
-    /**
-     * Enable file minimization.
-     */
+    /* Enable file minimization */
     minimize: true,
 
-    /**
-     * Enable postcss.
-     */
+    /* Enable postcss */
     postcss: true,
 
-    /**
-     * Enable sourcemaps.
-     */
+    /* Enable sourcemaps */
     sourcemaps: true,
 
-    /**
-     * Enable webpack.
-     */
+    /* Enable webpack */
     webpack: false,
 
-    /**
-     * Directory paths.
-     */
-    paths: {
-        'baseDir': './',
+    /* Source paths */
+    source: {
+        'images': './assets/images',
+        'sass': './assets/styles/sass',
+        'scripts': './assets/scripts',
+        'styles': './assets/styles',
+	},
+	
+	/* Destination paths */
+	dest: {
         'dist': './dist',
         'images': './assets/images',
         'sass': './assets/styles/sass',
         'scripts': './assets/scripts',
         'styles': './assets/styles',
-    },
+	},
 
-    /**
-     * Files.
-     */
+    /* Files */
     files: {
         'css': 'style.css',
         'cssmin': 'style.min.css',
-        'concatScripts': '/concat/*.js',
         'html': [ './*.html', './**/*.html' ],
         'images': '/**/*',
         'js': 'script.js',
-        'jsmin': 'script.min.js',
+		'jsmin': 'script.min.js',
+		'jsSrc': '/src/*.js',
         'php': [ './*.php', './**/*.php' ],
         'sass': '/**/*.scss',
     },
 
-    /**
-     * Excluded distribution files.
-     */
+    /* Excluded distribution files */
     excludes: [
         './**/*',
         '!assets/styles/sass',
         '!assets/styles/sass/**',
-        '!assets/scripts',
-        '!assets/scripts/**',
+        '!assets/scripts/src',
+		'!assets/scripts/src/**',
         '!bin',
         '!bin/**',
         '!dist',
@@ -92,5 +81,5 @@ export default {
         '!phpunit.xml',
         '!webpack.config.js',
         '!yarn.lock',
-    ]
-}
+    ],
+};

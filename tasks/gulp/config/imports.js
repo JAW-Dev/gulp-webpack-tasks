@@ -65,5 +65,5 @@ export {
     uglify,
     webpack,
     webpackStream,
-    yargs
+    yargs,
 };

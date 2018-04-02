@@ -10,14 +10,14 @@
 
 import { api, enviroment, webpack, UglifyJsPlugin } from './tasks/gulp/config/imports';
 
-const scriptsDir = enviroment.paths.scripts;
-const js = scriptsDir + '/' + enviroment.files.js;
+const scriptsDest = enviroment.dest.scripts;
+const js = scriptsDest + '/' + enviroment.files.js;
 
 module.exports = {
   entry: __dirname + '/' + js,
   output: {
       filename: 'script.min.js',
-      path: __dirname + '/' + scriptsDir + '/',
+      path: __dirname + '/' + scriptsDest + '/',
   },
   devtool: 'eval-source-map',
   module: {
@@ -35,6 +35,6 @@ module.exports = {
     ],
   },
   plugins: [
-      new UglifyJsPlugin()
+      new UglifyJsPlugin(),
   ],
 };

@@ -10,11 +10,10 @@
 
 import { api, browserSync, enviroment, gulp, watch } from '../config/imports';
 
-const stylesDir = enviroment.paths.styles;
-const scriptsDir = enviroment.paths.scripts;
-const js = scriptsDir + '/' + enviroment.files.js;
-const jsConcat = scriptsDir + '/' + enviroment.files.concatScripts;
-const sassfiles = enviroment.paths.sass + '/' + enviroment.files.sass;
+const scriptsDest = enviroment.dest.scripts;
+const js = scriptsDest + '/' + enviroment.files.js;
+const jsSrc = scriptsDest + '/' + enviroment.files.jsSrc;
+const sassfiles = enviroment.source.sass + '/' + enviroment.files.sass;
 
 /**
  * Watch
@@ -30,7 +29,7 @@ gulp.task( 'watch', () => {
 		reloadDelay: 1000,
     });
 	gulp.watch( sassfiles, [ 'styles' ]);
-	gulp.watch( jsConcat, [ 'scripts' ]);
+	gulp.watch( jsSrc, [ 'scripts' ]);
 	gulp.watch( enviroment.files.html ).on( 'change', browserSync.reload );
 	gulp.watch( enviroment.files.php ).on( 'change', browserSync.reload );
 });

@@ -10,12 +10,13 @@
 
 'use strict';
 
-import { api, autoprefixer, cssnano, del, enviroment, gulp, gulpif, postcss, rename, sass, sourcemaps } from '../config/imports';
+import { api, autoprefixer, cssnano, enviroment, gulp, gulpif, postcss, rename, sass, sourcemaps } from '../config/imports';
 
-const stylesDir = enviroment.paths.styles;
-const css = stylesDir + '/' + enviroment.files.css;
-const cssmin = stylesDir + '/' + enviroment.files.cssmin;
-const sassfiles = enviroment.paths.sass + '/' + enviroment.files.sass;
+const stylesDest = enviroment.dest.styles;
+const css = stylesDest + '/' + enviroment.files.css;
+const cssmin = stylesDest + '/' + enviroment.files.cssmin;
+const sassfiles = enviroment.source.sass + '/' + enviroment.files.sass;
+const cssFiles = [ css, cssmin ];
 
 /**
  * Delete style.css and style.min.css before we minify and optimize
@@ -23,7 +24,7 @@ const sassfiles = enviroment.paths.sass + '/' + enviroment.files.sass;
  * @since 1.0.0
  */
 gulp.task( 'cleanStyles', () =>
-	del([ css, cssmin ])
+	api.cleanFiles( cssFiles )
 );
 
 /**
@@ -37,7 +38,7 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
 		.pipe( sass({'errLogToConsole': true, 'outputStyle': 'expanded'}) )
 		.pipe( gulpif( enviroment.postcss, postcss([ autoprefixer({'browsers': [ 'last 2 version' ]}) ]) ) )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write() ) )
-		.pipe( gulp.dest( stylesDir ) )
+		.pipe( gulp.dest( stylesDest ) )
 	);
 
 /**
@@ -49,7 +50,7 @@ gulp.task( 'minifyStyles', [ 'compileStyles' ], () =>
 gulp.src( css )
 	.pipe( gulpif( enviroment.minimize, cssnano({'safe': true, discardComments: {removeAll: true}}) ) )
 	.pipe( gulpif( enviroment.minimize, rename( enviroment.files.cssmin ) ) )
-	.pipe( gulpif( enviroment.minimize, gulp.dest( stylesDir ) ) )
+	.pipe( gulpif( enviroment.minimize, gulp.dest( stylesDest ) ) )
 );
 
 /**

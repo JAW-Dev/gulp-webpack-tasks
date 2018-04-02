@@ -10,7 +10,7 @@
 
 import { api, del, excludes, enviroment, gulp, gulpif } from '../config/imports';
 
-const distDir = enviroment.paths.dist;
+const distDir = enviroment.dest.dist;
 const distExcludes =  enviroment.excludes;
 
 /**

@@ -10,13 +10,15 @@
 
 'use strict';
 
-import { api, babel, concat, del, enviroment, gulp, gulpif, ignore, rename, sourcemaps, uglify, webpack, webpackStream } from '../config/imports';
+import { api, babel, concat, enviroment, gulp, gulpif, ignore, rename, sourcemaps, uglify, webpack, webpackStream } from '../config/imports';
 
 const webpackConfig = require( './../../../webpack.config.js' );
-const scriptsDir = enviroment.paths.scripts;
-const js = scriptsDir + '/' + enviroment.files.js;
-const jsmin = scriptsDir + '/' + enviroment.files.jsmin;
-const concatScripts = scriptsDir + '/' + enviroment.files.concatScripts;
+const scriptsSource = enviroment.source.scripts;
+const scriptsDest = enviroment.dest.scripts;
+const js = scriptsDest + '/' + enviroment.files.js;
+const jsmin = scriptsDest + '/' + enviroment.files.jsmin;
+const jsSrc = scriptsSource + '/' + enviroment.files.jsSrc;
+const jsFiles = [ js, jsmin ];
 
 /**
  * Delete Javascript files.
@@ -24,8 +26,7 @@ const concatScripts = scriptsDir + '/' + enviroment.files.concatScripts;
  * @since 1.0.0
  */
 gulp.task( 'cleanScripts', () =>
-	//del([ files.js, files.jsmin ])
-	del([ js, jsmin ])
+	api.cleanFiles( jsFiles )
 );
 
 /**
@@ -34,12 +35,12 @@ gulp.task( 'cleanScripts', () =>
  * @since 1.0.0
  */
 gulp.task( 'concat', [ 'cleanScripts' ], () =>
-	gulp.src( concatScripts )
+	gulp.src( jsSrc )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
 		.pipe( gulpif( enviroment.babel, babel({ presets: [ 'latest' ] }) ) )
 		.pipe( gulpif( enviroment.concat, concat( 'script.js' ) ) )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write() ) )
-		.pipe( gulp.dest( scriptsDir ) )
+		.pipe( gulp.dest( scriptsDest ) )
 );
 
 /**
@@ -48,12 +49,12 @@ gulp.task( 'concat', [ 'cleanScripts' ], () =>
   * @since 1.0.0
   */
  gulp.task( 'uglify', [ 'concat' ], () =>
-	 gulp.src( js )
+	gulp.src( js )
 		.pipe( ignore.exclude( enviroment.webpack ) )
-		.pipe( gulp.dest( scriptsDir ) )
+		.pipe( gulp.dest( scriptsDest ) )
 		.pipe( gulpif( enviroment.minimize, uglify({ 'mangle': false }) ) )
 		.pipe( gulpif( enviroment.minimize, rename({ extname: '.min.js' }) ) )
-		.pipe( gulpif( enviroment.minimize, gulp.dest( scriptsDir ) ) )
+		.pipe( gulpif( enviroment.minimize, gulp.dest( scriptsDest ) ) )
 );
 
 /**
@@ -64,7 +65,7 @@ gulp.task( 'concat', [ 'cleanScripts' ], () =>
 gulp.task( 'webpack', [ 'uglify' ], () => {
 	gulp.src( js )
 		.pipe( gulpif( enviroment.webpack, webpackStream( webpackConfig ) ), webpack )
-		.pipe( gulpif( enviroment.webpack, gulp.dest( scriptsDir ) ) )
+		.pipe( gulpif( enviroment.webpack, gulp.dest( scriptsDest ) ) );
 });
 
 /**
@@ -72,4 +73,4 @@ gulp.task( 'webpack', [ 'uglify' ], () => {
   *
   * @since 1.0.0
   */
-gulp.task( 'scripts', [ 'uglify' ] );
+gulp.task( 'scripts', [ 'webpack' ]);

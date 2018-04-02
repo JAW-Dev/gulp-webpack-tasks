@@ -1,4 +1,4 @@
-# Gulp Tasks with Webpack
+# Gulp Tasks with Webpack Boilerplate
 
 A boilerplate Gulp tasks package with Webpack support.
 

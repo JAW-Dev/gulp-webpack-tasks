@@ -12,8 +12,8 @@ object {
 hr {
 	background-color: $color-background-hr;
 	border: none;
-	height: 1px;
-	margin: 0 0 rem(24) 0;
+	height: px-to-px-to-rem(1);
+	margin: 0 0 px-to-rem($font-size-base) 0;
 	width: auto;
 }
 
@@ -24,7 +24,7 @@ figure {
 // Lists
 ul,
 ol {
-	margin: 0 0 rem(24) rem(24);
+	margin: 0 0 px-to-rem($font-size-base) px-to-rem($font-size-base);
 }
 
 ul {
@@ -37,7 +37,7 @@ ol {
 
 li > ul,
 li > ol {
-	margin: 0 0 0 rem(24);
+	margin: 0 0 0 px-to-rem($font-size-base);
 }
 
 dt {
@@ -45,13 +45,13 @@ dt {
 }
 
 dd {
-	margin: 0 rem(24) rem(24) 0;
+	margin: 0 px-to-rem($font-size-base) px-to-rem($font-size-base) 0;
 }
 
 // Tables
 table {
 	height: auto;
-	margin: 0 0 rem(24) 0;
+	margin: 0 0 px-to-rem($font-size-base) 0;
 	width: 100%;
 }
 

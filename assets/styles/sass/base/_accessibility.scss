@@ -4,10 +4,10 @@
 
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
-	height: rem(1px);
+	height: px-to-rem(1);
 	overflow: hidden;
 	position: absolute;
-	width: rem(1px);
+	width: px-to-rem(1);
 
 	&:focus {
 		@include font-size(0.875);
@@ -21,7 +21,7 @@
 		height: auto;
 		left: 5px;
 		line-height: normal;
-		padding: rem(15px) rem(23px) rem(14px);
+		padding: px-to-rem(15) px-to-rem(23) px-to-rem(14);
 		text-decoration: none;
 		top: 5px;
 		width: auto;

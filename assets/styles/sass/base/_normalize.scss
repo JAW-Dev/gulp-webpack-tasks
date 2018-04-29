@@ -50,13 +50,11 @@ a {
 
 abbr[title] {
 	border-bottom: none;
-	text-decoration: underline;
 	text-decoration: underline dotted;
 }
 
 b,
 strong {
-	font-weight: bolder;
 	font-weight: inherit;
 }
 
@@ -66,12 +64,12 @@ dfn {
 
 h1 {
 	font-size: 2em;
-	margin: 0.67em 0;
+	margin: 0.67rem 0;
 }
 
 mark {
-	background-color: #ff0;
-	color: #000;
+	background-color: $yellow;
+	color: $black;
 }
 
 small {
@@ -166,9 +164,9 @@ button:-moz-focusring,
 }
 
 fieldset {
-	border: 1px solid #c0c0c0;
-	margin: 0 2px;
-	padding: 0.35em 0.625em 0.75em;
+	border: 1px solid $silver;
+	margin: 0 px-to-rem(2);
+	padding: 0.35rem 0.625rem 0.75rem;
 }
 
 legend {
@@ -196,8 +194,8 @@ textarea {
 }
 
 [type="search"] {
-	outline-offset: -2px;
 	-webkit-appearance: textfield;
+	outline-offset: -2px;
 }
 
 [type="search"]::-webkit-search-cancel-button,
@@ -211,6 +209,6 @@ textarea {
 }
 
 ::-webkit-file-upload-button {
-	font: inherit;
 	-webkit-appearance: button;
+	font: inherit;
 }

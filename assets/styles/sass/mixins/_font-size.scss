@@ -1,3 +1,4 @@
+@charset "UTF-8";
 // ========================================
 // Font Legibility
 // ========================================
@@ -18,5 +19,5 @@
 
 @mixin font-size($size-value: 1px) {
 	font-size: $size-value;
-	font-size: rem($size-value);
+	font-size: rem($size-value); // sass-lint:disable-line no-duplicate-properties
 }

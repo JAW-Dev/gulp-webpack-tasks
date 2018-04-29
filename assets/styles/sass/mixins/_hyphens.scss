@@ -1,3 +1,4 @@
+@charset "UTF-8";
 // ========================================
 // Hyphens
 // ========================================
@@ -22,8 +23,8 @@
 
 
 @mixin hyphens($hyphens: auto) {
-  -moz-hyphens: $hyphens;
-  -ms-hyphens: $hyphens;
-  -webkit-hyphens: $hyphens;
-  hyphens: $hyphens;
+	-moz-hyphens: $hyphens;
+	-ms-hyphens: $hyphens;
+	-webkit-hyphens: $hyphens;
+	hyphens: $hyphens;
 }

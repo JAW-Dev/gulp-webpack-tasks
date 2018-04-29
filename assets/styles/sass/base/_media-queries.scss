@@ -1,30 +1,7 @@
 @charset "UTF-8";
-
-//     _            _           _                           _ _
-//    (_)          | |         | |                         | (_)
-//     _ _ __   ___| |_   _  __| | ___   _ __ ___   ___  __| |_  __ _
-//    | | '_ \ / __| | | | |/ _` |/ _ \ | '_ ` _ \ / _ \/ _` | |/ _` |
-//    | | | | | (__| | |_| | (_| |  __/ | | | | | |  __/ (_| | | (_| |
-//    |_|_| |_|\___|_|\__,_|\__,_|\___| |_| |_| |_|\___|\__,_|_|\__,_|
-//
-//      Simple, elegant and maintainable media queries in Sass
-//                        v1.4.9
-//
-//                http://include-media.com
-//
-//         Authors: Eduardo Boucas (@eduardoboucas)
-//                  Hugo Giraudel (@hugogiraudel)
-//
-//      This project is licensed under the terms of the MIT license
-
-
-////
-/// include-media library public configuration
-/// @author Eduardo Boucas
-/// @access public
-////
-
-
+// ========================================
+// Media Queries http://include-media.com
+// ========================================
 ///
 /// Creates a list of global breakpoints
 ///
@@ -58,7 +35,6 @@ $media-expressions: (
 	"retina2x": "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)",
 	"retina3x": "(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)"
 ) !default;
-
 
 ///
 /// Defines a number to be added or subtracted from each unit when declaring breakpoints with exclusive intervals
@@ -255,7 +231,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 /// @access private
 ////
 
-
 ///
 /// Get operator of an expression
 ///
@@ -278,7 +253,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 	$_: im-log("No operator found in `#{$expression}`.");
 }
 
-
 ///
 /// Get dimension of an expression, based on a found operator
 ///
@@ -299,7 +273,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 	@return $dimension;
 }
 
-
 ///
 /// Get dimension prefix based on an operator
 ///
@@ -310,7 +283,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 @function get-expression-prefix($operator) {
 	@return if(index(("<", "<=", "≤"), $operator), "max", "min");
 }
-
 
 ///
 /// Get value of an expression, based on a found operator
@@ -349,7 +321,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 
 	@return $value;
 }
-
 
 ///
 /// Parse an expression to return a valid media-query expression
@@ -404,7 +375,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 /// @access private
 ////
 
-
 ///
 /// Casts a string into a number
 ///
@@ -449,7 +419,6 @@ $im-no-media-expressions: ("screen", "portrait", "landscape") !default;
 
 	@return if($minus, -$result, $result);
 }
-
 
 ///
 /// Add `$unit` to `$value`

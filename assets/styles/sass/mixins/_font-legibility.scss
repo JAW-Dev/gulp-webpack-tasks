@@ -1,3 +1,4 @@
+@charset "UTF-8";
 // ========================================
 // Font Legibility
 // ========================================
@@ -21,7 +22,7 @@
 //     }
 
 @mixin font-legibility {
-	-moz-font-feature-settings: 'liga', 'kern';
+	-moz-font-feature-settings: "liga", "kern";
 	-moz-osx-font-smoothing: grayscale;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;

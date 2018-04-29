@@ -1,6 +1,8 @@
+@charset "UTF-8";
 // ========================================
 // Core
 // ========================================
+
 html {
 	@include font-legibility;
 	@include font-smoothing;

@@ -1,0 +1,15 @@
+@charset "UTF-8";
+// ========================================
+// Column Media Queries
+// ========================================
+
+div[class^="col"] {
+	&.no-gutter {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	&:last-of-type {
+		margin-right: 0;
+	}
+}

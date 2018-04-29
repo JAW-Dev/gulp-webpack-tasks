@@ -1,0 +1,38 @@
+@charset "UTF-8";
+// ========================================
+// Column Media Queries
+// ========================================
+
+@include media(">desktop-sm") {
+	@for $i from 11 through 12 {
+		@include columns(#{$i});
+	}
+}
+
+@include media(">tablet-lg") {
+	@for $i from 9 through 10 {
+		@include columns(#{$i});
+	}
+}
+
+@include media(">tablet") {
+	@for $i from 7 through 8 {
+		@include columns(#{$i});
+	}
+}
+
+@include media(">tablet-sm") {
+	@for $i from 5 through 6 {
+		@include columns(#{$i});
+	}
+}
+
+@include media(">mobile-lg") {
+	@include columns(4);
+}
+
+@include media(">mobile") {
+	@for $i from 2 through 3 {
+		@include columns(#{$i});
+	}
+}

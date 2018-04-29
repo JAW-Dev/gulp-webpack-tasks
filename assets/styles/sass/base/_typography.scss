@@ -10,7 +10,7 @@ textarea {
 	@include font-smoothing;
 }
 
-// Headers
+// Headers and Paragraphs
 h1,
 .h1,
 h2,
@@ -22,13 +22,9 @@ h4,
 h5,
 .h5,
 h6,
-.h6 {
-	margin-top: 0;
-}
-
-// Copy
+.h6,
 p {
-	margin: 0 0 rem(24) 0;
+	margin: 0 0 px-to-rem($font-size-base) 0;
 }
 
 b,
@@ -45,7 +41,7 @@ i {
 
 blockquote,
 q {
-	margin: 0 rem(24);
+	margin: 0 px-to-rem($font-size-base);
 	quotes: "" "";
 
 	&::before,
@@ -55,17 +51,17 @@ q {
 }
 
 address {
-	margin: 0 0 rem(24) 0;
+	margin: 0 0 px-to-rem($font-size-base) 0;
 }
 
 pre {
 	font-family: $font-pre;
-	font-size: rem(15);
+	font-size: px-to-rem($font-size-base);
 	line-height: $line-height-pre;
-	margin: 0 0 rem(24);
+	margin: 0 0 px-to-rem($font-size-base);
 	max-width: 100%;
 	overflow: auto;
-	padding: rem(24);
+	padding: px-to-rem($font-size-base);
 }
 
 code,
@@ -73,7 +69,7 @@ kbd,
 tt,
 var {
 	font-family: $font-code;
-	font-size: rem(15);
+	font-size: px-to-rem($font-size-base);
 }
 
 abbr,

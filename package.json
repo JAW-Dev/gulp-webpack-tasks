@@ -4,7 +4,7 @@
 	"description": "description",
 	"version": "1.0.0",
 	"license": "GNU General Public License v2 or later",
-	"main": "gulpfile.js",
+	"main": "gulpfile.babel.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
@@ -12,7 +12,7 @@
 		"autoprefixer": "^8.1.0",
 		"babel-core": "^6.26.0",
 		"babel-loader": "^7.1.4",
-		"babel-preset-latest": "^6.24.1",
+		"babel-preset-env": "^1.6.1",
 		"browser-sync": "^2.23.6",
 		"del": "^3.0.0",
 		"eslint-config-wordpress": "^2.0.0",

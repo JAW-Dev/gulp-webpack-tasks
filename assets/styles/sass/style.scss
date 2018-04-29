@@ -1,9 +1,14 @@
 // ========================================
 // Core Sass file
 // ========================================
-
 // Dependencies
 @import "dependencies";
 
+// Base
+@import "base/index";
+
 // Layout
 @import "layout/index";
+
+//WordPress
+@import "wordPress";

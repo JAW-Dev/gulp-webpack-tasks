@@ -1,0 +1,132 @@
+{
+	"development": {
+		"bable": true,
+		"concat": true,
+		"minify": true,
+		"postcss": true,
+		"sourcemaps": true,
+		"source": {
+			"images": "./assets/images",
+			"sass": "./assets/styles/sass",
+			"scripts": "./assets/scripts",
+        	"styles": "./assets/styles"
+		},
+		"dest": {
+			"dist": "./dist",
+			"images": "./assets/images",
+			"sass": "./assets/styles/sass",
+			"scripts": "./assets/scripts",
+			"styles": "./assets/styles"
+		},
+		"files": {
+			"css": "style.css",
+			"cssmin": "style.min.css",
+			"html": [ "./*.html", "./**/*.html" ],
+			"images": "/**/*",
+			"js": "script.js",
+			"jsmin": "script.min.js",
+			"jsSrc": "/src/*.js",
+			"php": [ "./*.php", "./**/*.php" ],
+			"sass": "/**/*.scss"
+		},
+		"excludes": [
+			"./**/*",
+			"!assets/styles/sass",
+			"!assets/styles/sass/**",
+			"!assets/scripts/src",
+			"!assets/scripts/src/**",
+			"!bin",
+			"!bin/**",
+			"!dist",
+			"!dist/**",
+			"!git",
+			"!git/**",
+			"!node_modules",
+			"!node_modules/**",
+			"!tasks",
+			"!tasks/**",
+			"!tests",
+			"!tests/**",
+			"!.bablerc",
+			"!.editorconfig",
+			"!.eslintrc.js",
+			"!.gitignore",
+			"!.sas-lint.yml",
+			"!.travis.yml",
+			"!gulpfile.babel.js",
+			"!package-lock.json",
+			"!package.json",
+			"!phpcs.xml",
+			"!phpmd.xml",
+			"!phpunit.xml",
+			"!yarn.lock"
+		]
+	},
+	"production": {
+		"javascript": {
+			"bable": true,
+			"concat": true
+		},
+		"css": {
+			"minimize": true,
+			"postcss": true,
+			"sourcemaps": true
+		},
+		"source": {
+			"images": "./assets/images",
+			"sass": "./assets/styles/sass",
+			"scripts": "./assets/scripts",
+        	"styles": "./assets/styles"
+		},
+		"dest": {
+			"dist": "./dist",
+			"images": "./assets/images",
+			"sass": "./assets/styles/sass",
+			"scripts": "./assets/scripts",
+			"styles": "./assets/styles"
+		},
+		"files": {
+			"css": "style.css",
+			"cssmin": "style.min.css",
+			"html": [ "./*.html", "./**/*.html" ],
+			"images": "/**/*",
+			"js": "script.js",
+			"jsmin": "script.min.js",
+			"jsSrc": "/src/*.js",
+			"php": [ "./*.php", "./**/*.php" ],
+			"sass": "/**/*.scss"
+		},
+		"excludes": [
+			"./**/*",
+			"!assets/styles/sass",
+			"!assets/styles/sass/**",
+			"!assets/scripts/src",
+			"!assets/scripts/src/**",
+			"!bin",
+			"!bin/**",
+			"!dist",
+			"!dist/**",
+			"!git",
+			"!git/**",
+			"!node_modules",
+			"!node_modules/**",
+			"!tasks",
+			"!tasks/**",
+			"!tests",
+			"!tests/**",
+			"!.bablerc",
+			"!.editorconfig",
+			"!.eslintrc.js",
+			"!.gitignore",
+			"!.sas-lint.yml",
+			"!.travis.yml",
+			"!gulpfile.babel.js",
+			"!package-lock.json",
+			"!package.json",
+			"!phpcs.xml",
+			"!phpmd.xml",
+			"!phpunit.xml",
+			"!yarn.lock"
+		]
+	}
+}

@@ -8,7 +8,7 @@
  * @version   1.0.0
  */
 
-import { api, del, excludes, enviroment, gulp, gulpif } from '../config/imports';
+import { api, del, excludes, enviroment, gulp, gulpif } from './imports';
 
 const distDir = enviroment.dest.dist;
 const distExcludes =  enviroment.excludes;

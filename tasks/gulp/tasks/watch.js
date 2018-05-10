@@ -8,7 +8,7 @@
  * @version   1.0.0
  */
 
-import { api, browserSync, enviroment, gulp, watch } from '../config/imports';
+import { api, browserSync, enviroment, gulp, watch } from './imports';
 
 const scriptsDest = enviroment.dest.scripts;
 const js = scriptsDest + '/' + enviroment.files.js;

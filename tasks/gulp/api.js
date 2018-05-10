@@ -12,24 +12,21 @@
 
 import fs from 'fs';
 import yargs, { argv } from 'yargs';
+import config from './gulp.config.json';
 
 export default {
   environment: ( argv.env ) ? argv.env : 'development',
-
 	getEnvironment() {
 		let environmentType;
-
 		try {
-			environmentType = require( `./environments/${this.environment}` );
+			environmentType = config[this.environment];
+			
 		} catch ( e ) {
-			throw new Error( `No environment file found for ${this.environment}` );
+			throw new Error( `No environment for ${this.environment}` );
 		}
-		environmentType.environment = this.environment;
 		return environmentType;
 	},
-
 	cleanFiles( files ) {
-
 		files.forEach( ( file, index ) => {
 			if ( fs.existsSync( file ) ) {
 				fs.unlinkSync( file );

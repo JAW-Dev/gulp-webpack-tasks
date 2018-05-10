@@ -15,7 +15,7 @@
 /* eslint no-unused-expressions: 0 */
 
 import requireDir from 'require-dir';
-import {gulp} from './tasks/gulp/config/imports';
+import {gulp} from './tasks/gulp/tasks/imports';
 
 requireDir( './tasks/gulp/tasks', { recurse: true });
 

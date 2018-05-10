@@ -10,7 +10,7 @@
 
 'use strict';
 
-import { api, autoprefixer, cssnano, enviroment, gulp, gulpif, postcss, rename, sass, sourcemaps } from '../config/imports';
+import { api, autoprefixer, cssnano, enviroment, gulp, gulpif, postcss, rename, sass, sourcemaps } from './imports';
 
 const stylesDest = enviroment.dest.styles;
 const css = stylesDest + '/' + enviroment.files.css;

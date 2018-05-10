@@ -6,17 +6,17 @@
 		"postcss": true,
 		"sourcemaps": true,
 		"source": {
-			"images": "./assets/images",
-			"sass": "./assets/styles/sass",
-			"scripts": "./assets/scripts",
-        	"styles": "./assets/styles"
+			"images": "./src/images",
+			"sass": "./src/css/sass",
+			"scripts": "./src/js",
+        	"styles": "./src/css"
 		},
 		"dest": {
 			"dist": "./dist",
-			"images": "./assets/images",
-			"sass": "./assets/styles/sass",
-			"scripts": "./assets/scripts",
-			"styles": "./assets/styles"
+			"images": "./src/images",
+			"sass": "./src/css/sass",
+			"scripts": "./src/js",
+			"styles": "./src/css"
 		},
 		"files": {
 			"css": "style.css",
@@ -31,10 +31,10 @@
 		},
 		"excludes": [
 			"./**/*",
-			"!assets/styles/sass",
-			"!assets/styles/sass/**",
-			"!assets/scripts/src",
-			"!assets/scripts/src/**",
+			"!src/css/sass",
+			"!src/css/sass/**",
+			"!src/js/src",
+			"!src/js/src/**",
 			"!bin",
 			"!bin/**",
 			"!dist",
@@ -73,17 +73,17 @@
 			"sourcemaps": true
 		},
 		"source": {
-			"images": "./assets/images",
-			"sass": "./assets/styles/sass",
-			"scripts": "./assets/scripts",
-        	"styles": "./assets/styles"
+			"images": "./src/images",
+			"sass": "./src/css/sass",
+			"scripts": "./src/js",
+        	"styles": "./src/css"
 		},
 		"dest": {
 			"dist": "./dist",
-			"images": "./assets/images",
-			"sass": "./assets/styles/sass",
-			"scripts": "./assets/scripts",
-			"styles": "./assets/styles"
+			"images": "./src/images",
+			"sass": "./src/css/sass",
+			"scripts": "./src/js",
+			"styles": "./src/css"
 		},
 		"files": {
 			"css": "style.css",
@@ -98,10 +98,10 @@
 		},
 		"excludes": [
 			"./**/*",
-			"!assets/styles/sass",
-			"!assets/styles/sass/**",
-			"!assets/scripts/src",
-			"!assets/scripts/src/**",
+			"!src/css/sass",
+			"!src/css/sass/**",
+			"!src/js/src",
+			"!src/js/src/**",
 			"!bin",
 			"!bin/**",
 			"!dist",

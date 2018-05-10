@@ -38,7 +38,7 @@ gulp.task( 'concat', [ 'cleanScripts' ], () =>
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
 		.pipe( gulpif( enviroment.babel, babel({ presets: [ 'env' ] }) ) )
 		.pipe( gulpif( enviroment.concat, concat( 'script.js' ) ) )
-		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write() ) )
+		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write( './' ) ) )
 		.pipe( gulp.dest( scriptsDest ) )
 );
 

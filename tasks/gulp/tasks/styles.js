@@ -37,7 +37,7 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
 		.pipe( sass({'errLogToConsole': true, 'outputStyle': 'expanded'}) )
 		.pipe( gulpif( enviroment.postcss, postcss([ autoprefixer({'browsers': [ 'last 2 version' ]}) ]) ) )
-		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write() ) )
+		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write( './' ) ) )
 		.pipe( gulp.dest( stylesDest ) )
 	);
 

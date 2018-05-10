@@ -39,9 +39,6 @@
 		"normalize-scss": "^7.0.1",
 		"require-dir": "^1.0.0",
 		"sass-mq": "^4.0.2",
-		"uglifyjs-webpack-plugin": "^1.2.4",
-		"webpack": "^4.1.1",
-		"webpack-stream": "^4.0.2",
 		"yargs": "^11.0.0"
 	}
 }

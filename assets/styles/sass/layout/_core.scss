@@ -3,13 +3,13 @@
 // Column Media Queries
 // ========================================
 
-div[class^="col"] {
+.row > [class^="col"] {
 	&.no-gutter {
 		margin-left: 0;
 		margin-right: 0;
 	}
 
-	&:last-of-type {
+	&:last-child {
 		margin-right: 0;
 	}
 }

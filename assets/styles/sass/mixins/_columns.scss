@@ -21,7 +21,7 @@
 }
 
 @mixin columns($columns) {
-	div[class^="col"] {
+	.row > [class^="col"] {
 		&.col-#{$columns} {
 			@include col(#{$columns});
 			margin-right: $gutter;

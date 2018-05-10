@@ -14,7 +14,7 @@
 	margin: 0;
 }
 
-div[class^="col"] {
+.row > [class^="col"] {
 	float: left;
 }
 

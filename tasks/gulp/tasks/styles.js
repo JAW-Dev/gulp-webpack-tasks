@@ -48,9 +48,9 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
  */
 gulp.task( 'minifyStyles', [ 'compileStyles' ], () =>
 gulp.src( css )
-	.pipe( gulpif( enviroment.minimize, cssnano({'safe': true, discardComments: {removeAll: true}}) ) )
-	.pipe( gulpif( enviroment.minimize, rename( enviroment.files.cssmin ) ) )
-	.pipe( gulpif( enviroment.minimize, gulp.dest( stylesDest ) ) )
+	.pipe( gulpif( enviroment.minify, cssnano({'safe': true, discardComments: {removeAll: true}}) ) )
+	.pipe( gulpif( enviroment.minify, rename( enviroment.files.cssmin ) ) )
+	.pipe( gulpif( enviroment.minify, gulp.dest( stylesDest ) ) )
 );
 
 /**

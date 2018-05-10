@@ -23,7 +23,6 @@ import ignore from 'gulp-ignore';
 import imagemin from 'gulp-imagemin';
 import notify from 'gulp-notify';
 import postcss from 'gulp-postcss';
-import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 import rename from 'gulp-rename';
 import replace from 'gulp-replace';
 import sass from 'gulp-sass';
@@ -31,11 +30,9 @@ import sassLint from 'gulp-sass-lint';
 import sourcemaps from 'gulp-sourcemaps';
 import uglify from 'gulp-uglify';
 import watch from 'gulp-watch';
-import webpack from 'webpack';
-import webpackStream from 'webpack-stream';
 import yargs, { argv } from 'yargs';
 
-const enviroment = api.getEnvironment().default;
+const enviroment = api.getEnvironment();
 
 export {
     api,
@@ -56,14 +53,11 @@ export {
     imagemin,
     notify,
     postcss,
-    UglifyJsPlugin,
     rename,
     replace,
     sass,
     sassLint,
     sourcemaps,
     uglify,
-    webpack,
-    webpackStream,
     yargs,
 };

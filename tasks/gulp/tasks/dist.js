@@ -29,6 +29,12 @@ gulp.task( 'cleanDist', () =>
   */
 gulp.task( 'copy', [ 'cleanDist' ], () =>
 	gulp.src( distExcludes )
+		.pipe( plumber({ errorHandler: ( err ) => {
+			notify.onError({
+				title: "Gulp error in " + err.plugin,
+				message: err.toString(),
+			})( err );
+		}}) )
 		.pipe( gulp.dest( distDir ) )
 );
 

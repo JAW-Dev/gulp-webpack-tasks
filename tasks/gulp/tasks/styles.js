@@ -34,6 +34,12 @@ gulp.task( 'cleanStyles', () =>
  */
 gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
 	gulp.src( sassfiles, [ css, ! cssmin ])
+		.pipe( plumber({ errorHandler: ( err ) => {
+			notify.onError({
+				title: "Gulp error in " + err.plugin,
+				message: err.toString(),
+			})( err );
+		}}) )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
 		.pipe( sass({'errLogToConsole': true, 'outputStyle': 'expanded'}) )
 		.pipe( gulpif( enviroment.postcss, postcss([ autoprefixer({'browsers': [ 'last 2 version' ]}) ]) ) )
@@ -48,6 +54,12 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
  */
 gulp.task( 'minifyStyles', [ 'compileStyles' ], () =>
 gulp.src( css )
+	.pipe( plumber({ errorHandler: ( err ) => {
+		notify.onError({
+			title: "Gulp error in " + err.plugin,
+			message: err.toString(),
+		})( err );
+	}}) )
 	.pipe( gulpif( enviroment.minify, cssnano({'safe': true, discardComments: {removeAll: true}}) ) )
 	.pipe( gulpif( enviroment.minify, rename( enviroment.files.cssmin ) ) )
 	.pipe( gulpif( enviroment.minify, gulp.dest( stylesDest ) ) )

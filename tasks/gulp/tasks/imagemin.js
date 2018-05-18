@@ -23,6 +23,12 @@ const images = imagesSource + '/' + enviroment.files.images;
  */
 gulp.task( 'imagemin', () =>
 	gulp.src( images )
+		.pipe( plumber({ errorHandler: ( err ) => {
+			notify.onError({
+				title: "Gulp error in " + err.plugin,
+				message: err.toString(),
+			})( err );
+		}}) )
 		.pipe( imagemin([
 			imagemin.gifsicle({interlaced: true}),
 			imagemin.jpegtran({progressive: true}),

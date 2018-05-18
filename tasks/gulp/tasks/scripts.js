@@ -10,45 +10,43 @@
 
 'use strict';
 
-import { api, babel, concat, enviroment, gulp, gulpif, ignore, rename, sourcemaps, uglify } from './imports';
+import { api, babel, concat, enviroment, gulp, gulpif, ignore, plumber, rename, sourcemaps, uglify, webpack, webpackStream } from './imports';
 
+const webpackConfig = require( './../../../webpack.config.js' );
 const scriptsSource = enviroment.source.scripts;
 const scriptsDest = enviroment.dest.scripts;
 const js = scriptsDest + '/' + enviroment.files.js;
-const jsmin = scriptsDest + '/' + enviroment.files.jsmin;
-const jsSrc = scriptsSource + '/' + enviroment.files.jsSrc;
-const jsFiles = [ js, jsmin ];
 
 /**
- * Delete Javascript files.
+ * Webpack.
  *
  * @since 1.0.0
  */
-gulp.task( 'cleanScripts', () =>
-	api.cleanFiles( jsFiles )
-);
-
-/**
- * Concatenate JavaScript.
- *
- * @since 1.0.0
- */
-gulp.task( 'concat', [ 'cleanScripts' ], () =>
-	gulp.src( jsSrc )
-		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.init() ) )
-		.pipe( gulpif( enviroment.babel, babel({ presets: [ 'env' ] }) ) )
-		.pipe( gulpif( enviroment.concat, concat( 'script.js' ) ) )
-		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write( './' ) ) )
-		.pipe( gulp.dest( scriptsDest ) )
-);
+gulp.task( 'webpack', () => {
+	return gulp.src( js )
+		.pipe( plumber({ errorHandler: ( err ) => {
+            notify.onError({
+                title: "Gulp error in " + err.plugin,
+                message: err.toString(),
+            })( err );
+        }}) )
+		.pipe( gulpif( enviroment.webpack, webpackStream( webpackConfig ) ), webpack )
+		.pipe( gulpif( enviroment.webpack, gulp.dest( scriptsDest ) ) );
+});
 
 /**
   * Uglify JavaScript.
   *
   * @since 1.0.0
   */
- gulp.task( 'uglify', [ 'concat' ], () =>
+ gulp.task( 'uglify', [ 'webpack' ], () =>
 	gulp.src( js )
+		.pipe( plumber({ errorHandler: ( err ) => {
+			notify.onError({
+				title: "Gulp error in " + err.plugin,
+				message: err.toString(),
+			})( err );
+		}}) )
 		.pipe( gulp.dest( scriptsDest ) )
 		.pipe( gulpif( enviroment.minify, uglify({ 'mangle': false }) ) )
 		.pipe( gulpif( enviroment.minify, rename({ extname: '.min.js' }) ) )
@@ -60,4 +58,4 @@ gulp.task( 'concat', [ 'cleanScripts' ], () =>
   *
   * @since 1.0.0
   */
-gulp.task( 'scripts', [ 'uglify' ]);
+gulp.task( 'scripts', [ 'webpack', 'uglify' ]);

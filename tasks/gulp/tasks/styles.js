@@ -10,33 +10,22 @@
 
 'use strict';
 
-import { api, autoprefixer, cssnano, enviroment, gulp, gulpif, postcss, rename, sass, sourcemaps } from './imports';
+import { api, autoprefixer, cssnano, enviroment, gulp, gulpif, notify, plumber, postcss, rename, sass, sourcemaps } from './imports';
 
-const stylesDest = enviroment.dest.styles;
-const css = stylesDest + '/' + enviroment.files.css;
-const cssmin = stylesDest + '/' + enviroment.files.cssmin;
-const sassfiles = enviroment.source.sass + '/' + enviroment.files.sass;
-const cssFiles = [ css, cssmin ];
-
-/**
- * Delete style.css and style.min.css before we minify and optimize
- *
- * @since 1.0.0
- */
-gulp.task( 'cleanStyles', () =>
-	api.cleanFiles( cssFiles )
-);
+const cssOutput = enviroment.srcDir + enviroment.outputDir.styles;
+const cssEntry = cssOutput + enviroment.files.css;
+const sassEntry = enviroment.srcDir + enviroment.entryDir.sass + enviroment.files.sass;
 
 /**
  * Compile Sass and run stylesheet through PostCSS.
  *
  * @since 1.0.0
  */
-gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
-	gulp.src( sassfiles, [ css, ! cssmin ])
+gulp.task( 'compileStyles', () =>
+	gulp.src( sassEntry )
 		.pipe( plumber({ errorHandler: ( err ) => {
 			notify.onError({
-				title: "Gulp error in " + err.plugin,
+				title: 'Gulp error in "compileStyles" task',
 				message: err.toString(),
 			})( err );
 		}}) )
@@ -44,7 +33,7 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
 		.pipe( sass({'errLogToConsole': true, 'outputStyle': 'expanded'}) )
 		.pipe( gulpif( enviroment.postcss, postcss([ autoprefixer({'browsers': [ 'last 2 version' ]}) ]) ) )
 		.pipe( gulpif( enviroment.sourcemaps, sourcemaps.write( './' ) ) )
-		.pipe( gulp.dest( stylesDest ) )
+		.pipe( gulp.dest( cssOutput ) )
 	);
 
 /**
@@ -53,16 +42,16 @@ gulp.task( 'compileStyles', [ 'cleanStyles' ], () =>
  * @since 1.0.0
  */
 gulp.task( 'minifyStyles', [ 'compileStyles' ], () =>
-gulp.src( css )
+gulp.src( cssEntry )
 	.pipe( plumber({ errorHandler: ( err ) => {
 		notify.onError({
-			title: "Gulp error in " + err.plugin,
+			title: 'Gulp error in "minifyStyles" task',
 			message: err.toString(),
 		})( err );
 	}}) )
 	.pipe( gulpif( enviroment.minify, cssnano({'safe': true, discardComments: {removeAll: true}}) ) )
 	.pipe( gulpif( enviroment.minify, rename( enviroment.files.cssmin ) ) )
-	.pipe( gulpif( enviroment.minify, gulp.dest( stylesDest ) ) )
+	.pipe( gulpif( enviroment.minify, gulp.dest( cssOutput ) ) )
 );
 
 /**

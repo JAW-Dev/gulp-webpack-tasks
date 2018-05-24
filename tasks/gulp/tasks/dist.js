@@ -8,9 +8,9 @@
  * @version   1.0.0
  */
 
-import { api, del, excludes, enviroment, gulp, gulpif } from './imports';
+import { api, del, excludes, enviroment, gulp, gulpif, notify, plumber } from './imports';
 
-const distDir = enviroment.dest.dist;
+const distDir = enviroment.outputDir.dist;
 const distExcludes =  enviroment.excludes;
 
 /**
@@ -31,7 +31,7 @@ gulp.task( 'copy', [ 'cleanDist' ], () =>
 	gulp.src( distExcludes )
 		.pipe( plumber({ errorHandler: ( err ) => {
 			notify.onError({
-				title: "Gulp error in " + err.plugin,
+				title: 'Gulp error in "copy" task',
 				message: err.toString(),
 			})( err );
 		}}) )

@@ -10,11 +10,11 @@
 
 'use strict';
 
-import { api, enviroment, gulp, gulpif, imagemin } from './imports';
+import { api, enviroment, gulp, gulpif, imagemin, notify, plumber } from './imports';
 
-const imagesSource = enviroment.source.images;
-const imagesDest = enviroment.dest.images;
-const images = imagesSource + '/' + enviroment.files.images;
+const imagesEntry = enviroment.srcDir + enviroment.entryDir.images;
+const imagesOutput = enviroment.srcDir + enviroment.outputDir.images;
+const images = imagesEntry + enviroment.files.images;
 
 /**
  * Optimize images.
@@ -25,7 +25,7 @@ gulp.task( 'imagemin', () =>
 	gulp.src( images )
 		.pipe( plumber({ errorHandler: ( err ) => {
 			notify.onError({
-				title: "Gulp error in " + err.plugin,
+				title: 'Gulp error in "imagemin" task',
 				message: err.toString(),
 			})( err );
 		}}) )
@@ -40,5 +40,5 @@ gulp.task( 'imagemin', () =>
 				],
 			}),
 		]) )
-		.pipe( gulp.dest( imagesDest ) )
+		.pipe( gulp.dest( imagesOutput ) )
 );

@@ -1,41 +1,42 @@
 {
 	"development": {
-		"bable": true,
-		"concat": true,
 		"minify": true,
 		"postcss": true,
 		"sourcemaps": true,
 		"webpack": true,
-		"source": {
-			"images": "./src/images",
-			"sass": "./src/css/sass",
-			"scripts": "./src/js",
-        	"styles": "./src/css"
+		"srcDir": "assets/",
+		"entryDir": {
+			"images": "images/",
+			"sass": "css/sass/",
+			"javascript": "js/",
+			"scripts": "js/scripts/",
+        	"styles": "css/"
 		},
-		"dest": {
-			"dist": "./dist",
-			"images": "./src/images",
-			"sass": "./src/css/sass",
-			"scripts": "./src/js",
-			"styles": "./src/css"
+		"outputDir": {
+			"dist": "./dist/",
+			"images": "images/",
+			"sass": "css/sass/",
+			"javascript": "js/",
+			"styles": "css/"
 		},
 		"files": {
 			"css": "style.css",
 			"cssmin": "style.min.css",
 			"html": [ "./*.html", "./**/*.html" ],
-			"images": "/**/*",
+			"images": "**/*",
 			"js": "script.js",
 			"jsmin": "script.min.js",
-			"jsSrc": "/scripts/index.js",
+			"jsSrc": "index.js",
+			"scriptsSrc": "**/*.js",
 			"php": [ "./*.php", "./**/*.php" ],
-			"sass": "/**/*.scss"
+			"sass": "**/*.scss"
 		},
 		"excludes": [
 			"./**/*",
-			"!src/css/sass",
-			"!src/css/sass/**",
-			"!src/js/src",
-			"!src/js/src/**",
+			"!assets/css/sass",
+			"!assets/css/sass/**",
+			"!assets/js/scripts",
+			"!assets/js/scripts/**",
 			"!bin",
 			"!bin/**",
 			"!dist",
@@ -64,42 +65,43 @@
 		]
 	},
 	"production": {
-		"bable": true,
-		"concat": true,
 		"minify": true,
 		"postcss": true,
 		"sourcemaps": true,
 		"webpack": true,
-		"source": {
-			"images": "./src/images",
-			"sass": "./src/css/sass",
-			"scripts": "./src/js",
-        	"styles": "./src/css"
+		"srcDir": "assets/",
+		"entryDir": {
+			"images": "images/",
+			"sass": "css/sass/",
+			"javascript": "js/",
+			"scripts": "js/scripts/",
+        	"styles": "css/"
 		},
-		"dest": {
-			"dist": "./dist",
-			"images": "./src/images",
-			"sass": "./src/css/sass",
-			"scripts": "./src/js",
-			"styles": "./src/css"
+		"outputDir": {
+			"dist": "./dist/",
+			"images": "images/",
+			"sass": "css/sass/",
+			"javascript": "js/",
+			"styles": "css/"
 		},
 		"files": {
 			"css": "style.css",
 			"cssmin": "style.min.css",
 			"html": [ "./*.html", "./**/*.html" ],
-			"images": "/**/*",
+			"images": "**/*",
 			"js": "script.js",
 			"jsmin": "script.min.js",
-			"jsSrc": "/src/*.js",
+			"jsSrc": "index.js",
+			"scriptsSrc": "**/*.js",
 			"php": [ "./*.php", "./**/*.php" ],
-			"sass": "/**/*.scss"
+			"sass": "**/*.scss"
 		},
 		"excludes": [
 			"./**/*",
-			"!src/css/sass",
-			"!src/css/sass/**",
-			"!src/js/src",
-			"!src/js/src/**",
+			"!assets/css/sass",
+			"!assets/css/sass/**",
+			"!assets/js/scripts",
+			"!assets/js/scripts/**",
 			"!bin",
 			"!bin/**",
 			"!dist",

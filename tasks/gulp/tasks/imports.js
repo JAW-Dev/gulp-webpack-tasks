@@ -56,7 +56,7 @@ export {
 	imagemin,
 	notify,
 	plumber,
-    postcss,
+	postcss,
     rename,
     replace,
     sass,

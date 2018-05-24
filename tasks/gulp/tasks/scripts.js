@@ -10,12 +10,11 @@
 
 'use strict';
 
-import { api, babel, concat, enviroment, gulp, gulpif, ignore, plumber, rename, sourcemaps, uglify, webpack, webpackStream } from './imports';
+import { api, babel, concat, enviroment, gulp, gulpif, ignore, notify, plumber, rename, sourcemaps, uglify, webpack, webpackStream } from './imports';
 
 const webpackConfig = require( './../../../webpack.config.js' );
-const scriptsSource = enviroment.source.scripts;
-const scriptsDest = enviroment.dest.scripts;
-const js = scriptsDest + '/' + enviroment.files.js;
+const jsSource = enviroment.srcDir + enviroment.entryDir.javascript + enviroment.files.js;
+const jsOutput = enviroment.srcDir + enviroment.outputDir.javascript;
 
 /**
  * Webpack.
@@ -23,15 +22,15 @@ const js = scriptsDest + '/' + enviroment.files.js;
  * @since 1.0.0
  */
 gulp.task( 'webpack', () => {
-	return gulp.src( js )
+	return gulp.src( jsSource )
 		.pipe( plumber({ errorHandler: ( err ) => {
             notify.onError({
-                title: "Gulp error in " + err.plugin,
+                title: 'Gulp error in "webpack" task',
                 message: err.toString(),
             })( err );
         }}) )
 		.pipe( gulpif( enviroment.webpack, webpackStream( webpackConfig ) ), webpack )
-		.pipe( gulpif( enviroment.webpack, gulp.dest( scriptsDest ) ) );
+		.pipe( gulpif( enviroment.webpack, gulp.dest( jsOutput ) ) );
 });
 
 /**
@@ -39,23 +38,23 @@ gulp.task( 'webpack', () => {
   *
   * @since 1.0.0
   */
- gulp.task( 'uglify', [ 'webpack' ], () =>
-	gulp.src( js )
+ gulp.task( 'uglify', [ 'webpack' ], () => {
+		gulp.src( jsSource )
 		.pipe( plumber({ errorHandler: ( err ) => {
 			notify.onError({
-				title: "Gulp error in " + err.plugin,
+				title: 'Gulp error in "uglify" task',
 				message: err.toString(),
 			})( err );
 		}}) )
-		.pipe( gulp.dest( scriptsDest ) )
+		.pipe( gulp.dest( jsOutput ) )
 		.pipe( gulpif( enviroment.minify, uglify({ 'mangle': false }) ) )
 		.pipe( gulpif( enviroment.minify, rename({ extname: '.min.js' }) ) )
-		.pipe( gulpif( enviroment.minify, gulp.dest( scriptsDest ) ) )
-);
+		.pipe( gulpif( enviroment.minify, gulp.dest( jsOutput ) ) );
+ });
 
 /**
   * Compile JavaScript.
   *
   * @since 1.0.0
   */
-gulp.task( 'scripts', [ 'webpack', 'uglify' ]);
+gulp.task( 'scripts', [ 'uglify' ]);

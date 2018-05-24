@@ -10,10 +10,8 @@
 
 import { api, browserSync, enviroment, gulp, watch } from './imports';
 
-const scriptsDest = enviroment.dest.scripts;
-const js = scriptsDest + '/' + enviroment.files.js;
-const jsSrc = scriptsDest + '/' + enviroment.files.jsSrc;
-const sassfiles = enviroment.source.sass + '/' + enviroment.files.sass;
+const scriptsSource = enviroment.srcDir + enviroment.entryDir.scripts + enviroment.files.scriptsSrc;
+const sassfiles = enviroment.srcDir + enviroment.entryDir.sass + enviroment.files.sass;
 
 /**
  * Watch
@@ -23,13 +21,14 @@ const sassfiles = enviroment.source.sass + '/' + enviroment.files.sass;
 gulp.task( 'watch', () => {
 	browserSync.init([
         sassfiles,
-        js,
+        scriptsSource,
     ], {
-		proxy: 'http://templates.test/build-tools/',
+		proxy: 'https://wp-dev.test/',
 		reloadDelay: 1000,
+		notify: false,
     });
 	gulp.watch( sassfiles, [ 'styles' ]);
-	gulp.watch( jsSrc, [ 'scripts' ]);
+	gulp.watch( scriptsSource, [ 'scripts' ]);
 	gulp.watch( enviroment.files.html ).on( 'change', browserSync.reload );
 	gulp.watch( enviroment.files.php ).on( 'change', browserSync.reload );
 });

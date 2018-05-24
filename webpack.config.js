@@ -10,19 +10,16 @@
 
 import { api, enviroment, webpack } from './tasks/gulp/tasks/imports';
 
-const scriptsSource = enviroment.source.scripts;
-const scriptsDest = enviroment.dest.scripts;
-const js = scriptsDest + '/' + enviroment.files.js;
-const jsSrc = scriptsSource + '/' +  enviroment.files.jsSrc;
-const jsmin = scriptsDest + '/' + enviroment.files.jsmin;
-
+const path = require( 'path' );
+const jsSource = path.join( __dirname, enviroment.srcDir + enviroment.entryDir.scripts + enviroment.files.jsSrc );
+const jsOutput = path.join( __dirname, enviroment.srcDir + enviroment.outputDir.javascript );
 
 module.exports = {
 	devtool: 'source-map',
-	entry: jsSrc,
+	entry: jsSource,
 	output: {
 		filename: enviroment.files.js,
-		path: __dirname + '/' + scriptsDest + '/',
+		path: jsOutput,
 	},
 	module: {
 		rules: [
